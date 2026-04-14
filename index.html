@@ -132,8 +132,6 @@
              alt="ukrainiec" id="secretImage">
     </div>
 
-    <div id="hammer" style="position: fixed; width: 80px; height: 80px; pointer-events: none; z-index: 9999; transform: translate(-30px, -60px); transition: transform 0.08s; user-select: none; font-size: 60px;">🔨</div>
-    
     <audio id="birthdayMusic" loop>
         <source src="https://media.vole.wtf/happy-birthday/jazz-trio.mp3" type="audio/mpeg">
     </audio>
@@ -151,20 +149,6 @@
                 });
             }
 
-        const hammer = document.getElementById('hammer');
-
-        document.addEventListener('mousemove', (e) => {
-            hammer.style.left = e.pageX + 'px';
-            hammer.style.top = e.pageY + 'px';
-        });
-        
-        document.addEventListener('click', (e) => {
-            hammer.style.transform = 'translate(-30px, -60px) rotate(-45deg)';
-            
-            setTimeout(() => {
-                hammer.style.transform = 'translate(-30px, -60px) rotate(0deg)';
-            }, 80);
-        
         document.body.addEventListener('click', startMusic, { once: true });
     
         document.querySelector('.container').addEventListener('click', startMusic);
