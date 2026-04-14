@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>staruch</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap');
@@ -73,9 +73,31 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             transition: all 0.3s;
             user-select: none;
+            z-index: 40;
         }
 
         .switch:hover {
+            transform: scale(1.08);
+        }
+
+        /* Przycisk młotka */
+        #hammerBtn {
+            position: fixed;
+            bottom: 95px;
+            right: 30px;
+            background: #e91e63;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            z-index: 40;
+            user-select: none;
+        }
+
+        #hammerBtn:hover {
             transform: scale(1.08);
         }
 
@@ -114,32 +136,44 @@
             overflow: hidden;
         }
 
-        /* Poprawki dla telefonów */
+        /* === POPRAWKI DLA TELEFONÓW === */
         @media (max-width: 480px) {
             h1 {
                 font-size: 3rem;
             }
             .photo {
-                width: 240px;
-                height: 240px;
-                border-width: 8px;
+                width: 245px;
+                height: 245px;
+                border-width: 10px;
+                margin: 15px auto;
             }
+            p {
+                font-size: 1.2rem;
+                margin-top: 10px;
+            }
+
             .switch {
+                bottom: 18px;
+                right: 18px;
                 padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+
+            #hammerBtn {
+                bottom: 78px;
+                right: 18px;
+                padding: 11px 18px;
                 font-size: 1rem;
-                bottom: 20px;
-                right: 20px;
             }
         }
 
-        @media (max-height: 650px) {
-            h1 {
-                font-size: 2.8rem;
-                margin-bottom: 15px;
-            }
+        @media (max-height: 640px) {
             .photo {
                 width: 220px;
                 height: 220px;
+            }
+            h1 {
+                margin-bottom: 15px;
             }
         }
     </style>
