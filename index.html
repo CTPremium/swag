@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>staruch</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap');
 
         * {
             box-sizing: border-box;
@@ -15,7 +15,6 @@
             margin: 0;
             padding: 0;
             min-height: 100dvh;
-            height: 100vh;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
@@ -29,17 +28,17 @@
 
         .container {
             z-index: 10;
-            padding: 15px;
+            padding: 15px 15px 80px;
             max-width: 100%;
         }
 
         h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
-            margin: 0 0 30px 0;
+            font-size: 4.2rem;
+            margin: 0 0 25px 0;
             text-shadow: 0 0 20px rgba(255,255,255,0.8);
             animation: glow 2s ease-in-out infinite alternate;
-            line-height: 1.1;
+            line-height: 1.05;
         }
 
         @keyframes glow {
@@ -48,56 +47,45 @@
         }
 
         .photo {
-            width: 320px;
-            height: 320px;
+            width: 290px;
+            height: 290px;
             border-radius: 50%;
             object-fit: cover;
             border: 12px solid white;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            margin: 20px auto;
+            margin: 15px auto 25px;
         }
 
-        .switch {
+        /* Przyciski na górze po prawej */
+        .buttons-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 50;
+        }
+
+        .switch, #hammerBtn {
             background: white;
             color: #333;
-            padding: 12px 20px;
+            padding: 11px 18px;
             border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
             transition: all 0.3s;
             user-select: none;
-            z-index: 40;
+            white-space: nowrap;
         }
 
-        .switch:hover {
-            transform: scale(1.08);
-        }
-
-        /* Przycisk młotka */
         #hammerBtn {
-            position: fixed;
-            bottom: 95px;
-            right: 30px;
             background: #e91e63;
             color: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-size: 1.05rem;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            transition: all 0.3s;
-            z-index: 40;
-            user-select: none;
         }
 
-        #hammerBtn:hover {
+        .switch:hover, #hammerBtn:hover {
             transform: scale(1.08);
         }
 
@@ -113,8 +101,8 @@
         }
 
         .modal img {
-            max-width: 90%;
-            max-height: 85vh;
+            max-width: 92%;
+            max-height: 78vh;
             border-radius: 15px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
@@ -136,44 +124,27 @@
             overflow: hidden;
         }
 
-        /* === POPRAWKI DLA TELEFONÓW === */
+        /* Poprawki mobilne */
         @media (max-width: 480px) {
             h1 {
-                font-size: 3rem;
+                font-size: 2.85rem;
             }
             .photo {
-                width: 245px;
-                height: 245px;
-                border-width: 10px;
-                margin: 15px auto;
+                width: 235px;
+                height: 235px;
+                border-width: 9px;
             }
-            p {
-                font-size: 1.2rem;
-                margin-top: 10px;
+            .container {
+                padding-bottom: 70px;
             }
-
-            .switch {
-                bottom: 18px;
-                right: 18px;
-                padding: 10px 16px;
-                font-size: 0.95rem;
+            .buttons-top {
+                top: 12px;
+                right: 12px;
+                gap: 8px;
             }
-
-            #hammerBtn {
-                bottom: 78px;
-                right: 18px;
-                padding: 11px 18px;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-height: 640px) {
-            .photo {
-                width: 220px;
-                height: 220px;
-            }
-            h1 {
-                margin-bottom: 15px;
+            .switch, #hammerBtn {
+                padding: 9px 16px;
+                font-size: 0.93rem;
             }
         }
     </style>
@@ -193,8 +164,9 @@
         </p>
     </div>
 
-    <div class="switch" id="switch">
-        🇺🇦 ja nie panimaju
+<div class="buttons-top">
+        <div id="hammerBtn">🔨 przypierdol majce</div>
+        <div class="switch" id="switch">🇺🇦 ja nie panimaju</div>
     </div>
 
     <div class="modal" id="modal">
@@ -261,9 +233,7 @@
         document.head.appendChild(style);
     </script>
 
-<div id="hammerBtn" style="position: fixed; bottom: 100px; right: 30px; background: #e91e63; color: white; padding: 14px 22px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.3); z-index: 40; user-select: none; transition: all 0.2s;">
-    przypierdol majce
-</div>
+
 
 <div id="hammerHit" style="position: absolute; font-size: 90px; opacity: 0; pointer-events: none; z-index: 50; transition: all 0.15s;">🔨</div>
 
