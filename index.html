@@ -184,6 +184,10 @@
         <source src="https://media.vole.wtf/happy-birthday/jazz-trio.mp3" type="audio/mpeg">
     </audio>
 
+    <audio id="hammerSound" preload="auto">
+        <source src="https://www.soundjay.com/mechanical/sounds/hammering-1.mp3" type="audio/mpeg">
+    </audio>
+    
     <script>
         const music = document.getElementById('birthdayMusic');
             let isPlaying = false;
@@ -246,8 +250,11 @@
 const hammerBtn = document.getElementById('hammerBtn');
 const photo = document.getElementById('mainPhoto');
 const hammerHit = document.getElementById('hammerHit');
+const hammerSound = document.getElementById('hammerSound');
 
 hammerBtn.addEventListener('click', () => {
+    hammerSound.currentTime = 0;
+    hammerSound.play().catch(() => {});
     photo.style.transition = 'transform 0.1s';
     photo.style.transform = 'scale(0.92) translateY(8px)';
 
