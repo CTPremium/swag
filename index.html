@@ -187,6 +187,10 @@
     <audio id="hammerSound" preload="auto">
         <source src="hammer.mp3" type="audio/mpeg">
     </audio>
+
+    <audio id="pigSound" preload="auto">
+        <source src="pig.mp3" type="audio/mpeg">
+    </audio>
     
     <script>
         const music = document.getElementById('birthdayMusic');
@@ -205,8 +209,15 @@
     
         document.querySelector('.container').addEventListener('click', startMusic);
 
+        const modal = document.getElementById('modal');
+        const pigSound = document.getElementById('pigSound');
+        
         document.getElementById('switch').addEventListener('click', () => {
-            document.getElementById('modal').style.display = 'flex';
+            modal.style.display = 'flex';
+            
+
+            pigSound.currentTime = 0; 
+            pigSound.play().catch(() => {});
         });
 
         document.getElementById('closeModal').addEventListener('click', () => {
