@@ -7,9 +7,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap');
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
+            min-height: 100dvh;
             height: 100vh;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
             font-family: 'Poppins', sans-serif;
@@ -24,6 +29,8 @@
 
         .container {
             z-index: 10;
+            padding: 15px;
+            max-width: 100%;
         }
 
         h1 {
@@ -32,6 +39,7 @@
             margin: 0 0 30px 0;
             text-shadow: 0 0 20px rgba(255,255,255,0.8);
             animation: glow 2s ease-in-out infinite alternate;
+            line-height: 1.1;
         }
 
         @keyframes glow {
@@ -105,6 +113,35 @@
             pointer-events: none;
             overflow: hidden;
         }
+
+        /* Poprawki dla telefonów */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .photo {
+                width: 240px;
+                height: 240px;
+                border-width: 8px;
+            }
+            .switch {
+                padding: 10px 16px;
+                font-size: 1rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-height: 650px) {
+            h1 {
+                font-size: 2.8rem;
+                margin-bottom: 15px;
+            }
+            .photo {
+                width: 220px;
+                height: 220px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -118,7 +155,7 @@
              alt="Maja" class="photo" id="mainPhoto">
 
         <p style="font-size: 1.4rem; margin-top: 20px; opacity: 0.9;">
-            Sto lat i chuuuuj pozdro od jakiza
+            Sto lat i chuuuuj pozdro od jakiza staruchu hej pa
         </p>
     </div>
 
@@ -189,5 +226,50 @@
         `;
         document.head.appendChild(style);
     </script>
+
+<div id="hammerBtn" style="position: fixed; bottom: 100px; right: 30px; background: #e91e63; color: white; padding: 14px 22px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.3); z-index: 40; user-select: none; transition: all 0.2s;">
+    przypierdol majce
+</div>
+
+<div id="hammerHit" style="position: absolute; font-size: 90px; opacity: 0; pointer-events: none; z-index: 50; transition: all 0.15s;">🔨</div>
+
+<script>
+const hammerBtn = document.getElementById('hammerBtn');
+const photo = document.getElementById('mainPhoto');
+const hammerHit = document.getElementById('hammerHit');
+
+hammerBtn.addEventListener('click', () => {
+    photo.style.transition = 'transform 0.1s';
+    photo.style.transform = 'scale(0.92) translateY(8px)';
+
+    const rect = photo.getBoundingClientRect();
+    hammerHit.style.left = (rect.left + rect.width / 2 - 30) + 'px';
+    hammerHit.style.top = (rect.top + rect.height / 2 - 60) + 'px';
+    hammerHit.style.opacity = '1';
+    hammerHit.style.transform = 'rotate(-35deg) scale(1.2)';
+
+    if (typeof confetti !== 'undefined') {
+        confetti({
+            particleCount: 120,
+            spread: 80,
+            origin: { y: 0.7 }
+        });
+    }
+
+    setTimeout(() => {
+        photo.style.transform = 'scale(1) translateY(0)';
+    }, 180);
+
+    setTimeout(() => {
+        hammerHit.style.opacity = '0';
+        hammerHit.style.transform = 'rotate(0deg) scale(0.8)';
+    }, 300);
+});
+
+const confettiScript = document.createElement('script');
+confettiScript.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js";
+document.head.appendChild(confettiScript);
+</script>
+    
 </body>
 </html>
