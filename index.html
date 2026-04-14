@@ -123,7 +123,11 @@
     </div>
 
     <div class="switch" id="switch">
-        🇺🇦 Ja nie panimaju
+        🇺🇦 ja nie panimaju
+    </div>
+
+    <div class="music-btn" id="musicBtn">
+        mjuzik
     </div>
 
     <div class="modal" id="modal">
@@ -132,13 +136,32 @@
              alt="ukrainiec" id="secretImage">
     </div>
 
-    <audio id="birthdayMusic" loop autoplay>
+    <audio id="birthdayMusic" loop>
         <source src="https://media.vole.wtf/happy-birthday/jazz-trio.mp3" type="audio/mpeg">
+        Twoja przeglądarka nie obsługuje audio.
     </audio>
 
     <script>
         const music = document.getElementById('birthdayMusic');
-        music.volume = 0.6;
+        const musicBtn = document.getElementById('musicBtn');
+        let isPlaying = false;
+        
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.textContent = '▶ Odtwórz muzykę urodzinową';
+            } else {
+                music.play()
+                    .then(() => {
+                        musicBtn.textContent = '❚❚ Pauza';
+                    })
+                    .catch(err => {
+                        alert("Nie udało się włączyć muzyki.\nKliknij jeszcze raz przycisk (przeglądarki są bardzo restrykcyjne).");
+                        console.log(err);
+                    });
+            }
+            isPlaying = !isPlaying;
+        });
 
         document.getElementById('switch').addEventListener('click', () => {
             document.getElementById('modal').style.display = 'flex';
