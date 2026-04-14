@@ -28,7 +28,7 @@
 
         .container {
             z-index: 10;
-            padding: 15px 15px 80px;
+            padding: 15px 15px 120px 15px;
             max-width: 100%;
         }
 
@@ -56,28 +56,28 @@
             margin: 15px auto 25px;
         }
 
-        /* Przyciski na górze po prawej */
-        .buttons-top {
+        .buttons-bottom {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             z-index: 50;
+            width: 90%;
+            max-width: 320px;
         }
 
         .switch, #hammerBtn {
-            background: white;
-            color: #333;
-            padding: 11px 18px;
+            padding: 13px 20px;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             transition: all 0.3s;
             user-select: none;
-            white-space: nowrap;
+            text-align: center;
         }
 
         #hammerBtn {
@@ -85,8 +85,13 @@
             color: white;
         }
 
+        .switch {
+            background: white;
+            color: #333;
+        }
+
         .switch:hover, #hammerBtn:hover {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
         .modal {
@@ -124,27 +129,27 @@
             overflow: hidden;
         }
 
-        /* Poprawki mobilne */
+        /* Poprawki dla telefonów */
         @media (max-width: 480px) {
             h1 {
-                font-size: 2.85rem;
+                font-size: 2.9rem;
             }
             .photo {
                 width: 235px;
                 height: 235px;
-                border-width: 9px;
+                border-width: 10px;
             }
             .container {
-                padding-bottom: 70px;
+                padding-bottom: 140px;
             }
-            .buttons-top {
-                top: 12px;
-                right: 12px;
-                gap: 8px;
+            .buttons-bottom {
+                bottom: 20px;
+                gap: 10px;
+                width: 92%;
             }
             .switch, #hammerBtn {
-                padding: 9px 16px;
-                font-size: 0.93rem;
+                padding: 12px 18px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -164,7 +169,7 @@
         </p>
     </div>
 
-<div class="buttons-top">
+    <div class="buttons-bottom">
         <div id="hammerBtn">🔨 przypierdol majce</div>
         <div class="switch" id="switch">🇺🇦 ja nie panimaju</div>
     </div>
